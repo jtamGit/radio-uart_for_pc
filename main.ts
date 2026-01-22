@@ -4,17 +4,11 @@ radio.onReceivedString(function (receivedString) {
 })
 let res = ""
 radio.setGroup(1)
+radio.setTransmitPower(7)
 serial.redirectToUSB()
 serial.setTxBufferSize(1000)
 serial.setRxBufferSize(1000)
 serial.setBaudRate(BaudRate.BaudRate4800)
-images.createImage(`
-    . . . . .
-    . . . . .
-    . . . . .
-    # . . . #
-    . # # # .
-    `).showImage(0)
 basic.forever(function () {
     res = serial.readString()
     if (res.isEmpty()) {
